@@ -11,9 +11,9 @@ namespace NetQuest.UI
         private readonly string _input;
         public string[] ParsedInput { get; private set; }
 
-        public InputParser(string input)
+        public InputParser(string? input)
         {
-            _input = input.Trim();
+            _input = input?.Trim() ?? "";
 
             List<string> args = new();
 
@@ -21,9 +21,9 @@ namespace NetQuest.UI
 
             while (parsed < _input.Length)
             {
-                StringBuilder builder = new StringBuilder();
+                StringBuilder builder = new();
 
-                char start = input[parsed];
+                char start = _input[parsed];
                 if(start == '"')
                 {
                     parsed++;
